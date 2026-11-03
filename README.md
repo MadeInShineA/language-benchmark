@@ -13,8 +13,7 @@ Toolchains come from the Nix flake (`direnv allow`, or `nix develop`).
 
 ## The `lc` tool
 
-`lc` lives in `tools/lc/` and runs with the uv project at the repo root.
-Run it from the repo root:
+`lc` lives in `tools/lc/` and runs with the small uv project at the repo root (`pyproject.toml`: standard library only, pins Python ≥ 3.14). Run it from the repo root:
 
 ```sh
 uv run tools/lc daily               # fetch today's daily problem, create stubs in every language
@@ -41,10 +40,13 @@ problems/<id>/            one folder per problem, e.g. p0462_minimum_moves_to_eq
   problem.json            metadata from LeetCode (signature, snippets)
   cases.json              examples with expected outputs (you can add your own)
 
-python/solutions/<id>.py          ← your solutions
+python/problems/<id>.py           ← your solutions
 rust/src/problems/<id>.rs         ←
 go/problems/<id>/solution.go      ←
 js/problems/<id>.ts               ←
+
+python/pyproject.toml, rust/Cargo.toml,
+go/go.mod, js/package.json        per-language projects (Python deps via uv)
 
 python/runner.py, rust/src/main.rs,
 go/cmd/runner/, js/runner.ts      runners: load a solution and run it on the cases

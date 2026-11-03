@@ -104,17 +104,17 @@ class Python(Lang):
     dir = ROOT / "python"
 
     def solution_path(self, p):
-        return self.dir / "solutions" / f"{p.id}.py"
+        return self.dir / "problems" / f"{p.id}.py"
 
     def stub(self, p):
         code = fill_todo(p.snippet("python3"), "raise NotImplementedError")
         return f"from typing import List, Optional\n\n\n{code}\n"
 
     def build_cmd(self):
-        return ["uv", "sync", "--quiet", "--project", str(ROOT)]
+        return ["uv", "sync", "--quiet", "--project", str(self.dir)]
 
     def run_cmd(self, p, cases, iters, warmup):
-        return ["uv", "run", "--quiet", "--project", str(ROOT), "python",
+        return ["uv", "run", "--quiet", "--project", str(self.dir), "python",
                 str(self.dir / "runner.py"), str(p.dir), str(cases), str(iters), str(warmup)]
 
 

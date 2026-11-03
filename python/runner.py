@@ -28,7 +28,7 @@ def main() -> None:
     names = [p["name"] for p in meta["params"]]
     void_index = meta.get("output", {}).get("paramindex", 0) if meta["return"]["type"] == "void" else None
 
-    solution = importlib.import_module(f"solutions.{problem_dir.name}").Solution()
+    solution = importlib.import_module(f"problems.{problem_dir.name}").Solution()
     fn = getattr(solution, meta["name"])
 
     out = []
