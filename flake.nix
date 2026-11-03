@@ -22,6 +22,10 @@
       {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
+            # Python dependencies
+            python3
+            uv
+
             # JS dependencies
             bun
             nodejs
@@ -35,6 +39,7 @@
             cargo
             clippy
             rust-analyzer
+            rustfmt
 
             # C dependencies
             gcc
