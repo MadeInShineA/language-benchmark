@@ -45,6 +45,17 @@
             gcc
             clang
           ];
+
+          env.LD_LIBRARY_PATH =
+            with pkgs;
+            lib.makeLibraryPath [
+              stdenv.cc.cc.lib
+              zlib
+              libxcb
+              libGL
+              glib
+            ];
+
         };
       }
     );
