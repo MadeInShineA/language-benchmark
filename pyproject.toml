@@ -1,0 +1,7 @@
+# Tooling project (the `lc` tool). Standard library only; this just pins the Python version.
+# The Python solutions have their own project in python/pyproject.toml.
+[project]
+name = "language-benchmark-tools"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = []
