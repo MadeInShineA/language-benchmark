@@ -13,25 +13,25 @@ Toolchains come from the Nix flake (`direnv allow`, or `nix develop`).
 
 ## The `lc` tool
 
-`lc` lives in `tools/lc/`. It only uses Python's standard library, so there's nothing to install.
+`lc` lives in `tools/lc/` and runs with the uv project at the repo root.
 Run it from the repo root:
 
 ```sh
-python3 tools/lc daily               # fetch today's daily problem, create stubs in every language
-python3 tools/lc new two-sum         # fetch any problem by slug or URL
-python3 tools/lc test 462            # check every solution against the examples
-python3 tools/lc test 462 -l rust go # only some languages
-python3 tools/lc list                # problems and which languages have a solution file
-python3 tools/lc sync                # create missing stubs, regenerate glue code
+uv run tools/lc daily               # fetch today's daily problem, create stubs in every language
+uv run tools/lc new two-sum         # fetch any problem by slug or URL
+uv run tools/lc test 462            # check every solution against the examples
+uv run tools/lc test 462 -l rust go # only some languages
+uv run tools/lc list                # problems and which languages have a solution file
+uv run tools/lc sync                # create missing stubs, regenerate glue code
 ```
 
 `test` takes a problem number, slug or id. With none, it uses the most recently fetched problem.
 
 ### Typical workflow
 
-1. `python3 tools/lc daily`
+1. `uv run tools/lc daily`
 2. Read `problems/<id>/README.md` and solve it in each language (files below)
-3. `python3 tools/lc test` until everything passes
+3. `uv run tools/lc test` until everything passes
 
 ## Layout
 
